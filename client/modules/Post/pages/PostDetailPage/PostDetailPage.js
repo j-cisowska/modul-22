@@ -12,17 +12,23 @@ import { fetchPost } from '../../PostActions';
 // Import Selectors
 import { getPost } from '../../PostReducer';
 
-export function PostDetailPage(props) {
-  return (
-    <div>
-      <Helmet title={props.post.title} />
+export class PostDetailPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {props} = this;
+    return(<div>
+      <Helmet title = {props.post.title} />
       <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-        <h3 className={styles['post-title']}>{props.post.title}</h3>
-        <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
-        <p className={styles['post-desc']}>{props.post.content}</p>
+        <h3 className={styles['post-title']}> {props.post.title} </h3>
+        <p className={styles['author-name']}> <FormattedMessage id="by" /> {props.post.name}</p>
+        <p className={styles['post-desc']}> {props.post.content}</p>
       </div>
     </div>
-  );
+    );
+ }
 }
 
 // Actions required to provide data for this component to render in server side.
